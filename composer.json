@@ -11,6 +11,7 @@
             "email": "rade.jasenovcanin@yahoo.com"
         }
     ],
+    "minimum-stability": "stable",
     "require": {
         "yiisoft/yii2": "~2.0.45"
     },
