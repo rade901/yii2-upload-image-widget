@@ -4,6 +4,7 @@
     "type": "yii2-extension",
     "keywords": ["yii2", "widget", "upload", "image"],
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Rade Jasenovčanin",
@@ -12,8 +13,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "yiisoft/yii2": "~2.0.45",
-        "rade901/yii2-upload-image-widget": "dev-master"
+        "yiisoft/yii2": "~2.0.45"
     },
     "autoload": {
         "psr-4": {
