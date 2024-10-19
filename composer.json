@@ -11,10 +11,9 @@
             "email": "rade.jasenovcanin@yahoo.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
-        "yiisoft/yii2": "~2.0.45",
-        "rade901/yii2-upload-image-widget": "dev-master"
+        "yiisoft/yii2": "~2.0.45"
     },
     "autoload": {
         "psr-4": {
