@@ -1,6 +1,6 @@
 <?php
 
-namespace app\widgets\ImageWidget;
+namespace rade901;
 
 use app\models\File;
 use yii\base\Widget;

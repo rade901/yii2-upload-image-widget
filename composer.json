@@ -11,13 +11,12 @@
             "email": "rade.jasenovcanin@yahoo.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "yiisoft/yii2": "~2.0.45"
     },
     "autoload": {
         "psr-4": {
-            "rade901\\uploadImageWidget\\": "src/"
+            "rade901\\": ""
         }
     }
 }
