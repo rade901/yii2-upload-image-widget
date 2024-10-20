@@ -11,7 +11,7 @@
 
 
     
-     ```javascript
+```php
      use yii\helpers\Html;
      use yii\widgets\ActiveForm;
      use Rade901\Yii2UploadImageWidget\UploadImageWidget;
@@ -37,5 +37,5 @@
     
 
      </div>
-     ```
+```
 
