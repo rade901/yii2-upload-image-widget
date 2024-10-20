@@ -1,6 +1,6 @@
 <?php
 
-namespace rade901;
+namespace Rade901\Yii2UploadImageWidget;
 
 use app\models\File;
 use yii\base\Widget;
