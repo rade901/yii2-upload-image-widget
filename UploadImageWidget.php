@@ -63,25 +63,5 @@ class UploadImageWidget extends Widget
             Yii::$app->session->setFlash('error', $e->getMessage());
         }
     }
-        /**
-     * {@inheritdoc}
-     */
-    public function afterDelete()
-    {
-        parent::afterDelete();
-
-        if ($this->file_id) {
-            $file = File::findOne($this->file_id);
-            if ($file) {
-                $filePath = Yii::getAlias('@webroot') . '/' . Yii::$app->params['uploads']['image'] . '/' . $file->name;
-                if (file_exists($filePath)) {
-                    unlink($filePath);
-                }
-                $file->delete();
-            }
-        }
-        $widgetInstance = new widget();
-        $widgetInstance->afterDelete();
-    }
 
 }
