@@ -6,6 +6,7 @@ use app\models\File;
 use yii\base\Widget;
 use yii\web\UploadedFile;
 use Yii;
+use yii\base\Behavior;
 
 class UploadImageWidget extends Widget
 {
@@ -76,23 +77,19 @@ class UploadImageWidget extends Widget
 }
 class ImageBehavior extends Behavior
 {
-    public $imagePath = 'uploads/profile';
-    public $imageField = 'file_id';
 
-    public function events()
+    
+     /**
+     * {@inheritdoc}
+     */
+    public function afterDelete()
     {
-        return [
-            ActiveRecord::EVENT_BEFORE_DELETE => 'beforeDelete',
-        ];
-    }
+        parent::afterDelete();
 
-    public function beforeDelete()
-    {
-        $fileId = $this->owner->{$this->imageField};
-        if ($fileId) {
-            $file = File::findOne($fileId);
+        if ($this->file_id) {
+            $file = File::findOne($this->file_id);
             if ($file) {
-                $filePath = Yii::getAlias('@webroot') . '/' . $this->imagePath . '/' . $file->name;
+                $filePath = Yii::getAlias('@webroot') . '/' . Yii::$app->params['uploads']['profile'] . '/' . $file->name;
                 if (file_exists($filePath)) {
                     unlink($filePath);
                 }
