@@ -74,3 +74,24 @@ class UploadImageWidget extends Widget
         }
     }
 }
+class InsertAfterDelete extends Widget
+{
+     /**
+     * {@inheritdoc}
+     */
+    public function afterDelete()
+    {
+        parent::afterDelete();
+
+        if ($this->file_id) {
+            $file = File::findOne($this->file_id);
+            if ($file) {
+                $filePath = Yii::getAlias('@webroot') . '/' . Yii::$app->params['uploads']['profile'] . '/' . $file->name;
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+                $file->delete();
+            }
+        }
+    }
+}
