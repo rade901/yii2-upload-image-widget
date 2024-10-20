@@ -1,23 +1,18 @@
 {
-    "name": "rade901/yii2-upload-image-widget",
-    "description": "A Yii2 widget for uploading images.",
-    "type": "yii2-extension",
-    "keywords": ["yii2", "widget", "upload", "image"],
+    "name": "rade/yii2-upload-image-widget",
+    "description": "Upload one image widget for yii2",
+    "type": "yii2-widget",
     "license": "MIT",
-    "version": "v1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Rade\\Yii2UploadImageWidget\\": "src/"
+        }
+    },
     "authors": [
         {
-            "name": "Rade Jasenovčanin",
-            "email": "rade.jasenovcanin@yahoo.com"
+            "name": "Rade Jasenovcanin"
         }
     ],
     "minimum-stability": "stable",
-    "require": {
-        "yiisoft/yii2": "~2.0.45"
-    },
-    "autoload": {
-        "psr-4": {
-            "rade901\\": ""
-        }
-    }
+    "require": {}
 }
