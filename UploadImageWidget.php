@@ -19,32 +19,12 @@ class UploadImageWidget extends Widget
             if ($this->model->validate()) {
                 $this->saveImage();
             }
+
         }
 
         return $this->form->field($this->model, 'imageFile')->fileInput();
     }
-
-    public function events()
-    {
-        return [
-            ActiveRecord::EVENT_BEFORE_INSERT => 'beforeSave',
-            ActiveRecord::EVENT_BEFORE_UPDATE => 'beforeSave',
-            ActiveRecord::EVENT_BEFORE_DELETE => 'beforeDelete',
-        ];
-    }
-
-    public function beforeSave($event)
-    {
-        if ($this->owner->imageFile instanceof UploadedFile) {
-            $this->deleteOldImage();
-            $this->saveImage();
-        }
-    }
-
-    public function beforeDelete($event)
-    {
-        $this->deleteOldImage();
-    }
+    
 
     protected function saveImage()
     {
@@ -81,18 +61,6 @@ class UploadImageWidget extends Widget
         } catch (\Exception $e) {
             $transaction->rollBack();
             Yii::$app->session->setFlash('error', $e->getMessage());
-        }
-    }
-
-    protected function deleteOldImage($fileId)
-    {
-        $file = File::findOne($fileId);
-        if ($file) {
-            $filePath = Yii::getAlias('@webroot') . '/' . Yii::$app->params['uploads']['profile'] . '/' . $file->name;
-            if (file_exists($filePath)) {
-                unlink($filePath);
-            }
-            $file->delete();
         }
     }
 }
