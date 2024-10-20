@@ -28,13 +28,16 @@ class UploadImageWidget extends Widget
 
     protected function saveImage()
     {
+
         try {
             // Begin transaction
             $transaction = Yii::$app->db->beginTransaction();
         
-            // Delete the old image file if it exists
-            if ($this->model->file_id) {
-                $this->deleteOldImage($this->model->file_id);
+            if ($this->model->imageFile) {
+                // Delete the old image file if it exists
+                if ($this->model->file_id) {
+                    $this->deleteOldImage($this->model->file_id);
+                }
             }
         
             if ($this->model->imageFile) {
@@ -59,8 +62,12 @@ class UploadImageWidget extends Widget
         
                 Yii::$app->session->setFlash('success', 'Image uploaded successfully');
             } else {
-                // If no image is uploaded, set file_id to null and save the model
-                $this->model->file_id = null;
+               // If no image is uploaded, retain the old file_id if it exists
+                  if (!$this->model->file_id) {
+                     $this->model->file_id = null;
+                     }
+                
+
                 if (!$this->model->save()) {
                     throw new \Exception('Model save failed');
                 }
@@ -76,7 +83,7 @@ class UploadImageWidget extends Widget
         }
     }
     
-        
+     // Delete the old image file if it exists   
     protected function deleteOldImage($file_id)
     {
         $file = File::findOne($file_id);
