@@ -80,5 +80,8 @@ class UploadImageWidget extends Widget
                 $file->delete();
             }
         }
+        $widgetInstance = new widget();
+        $widgetInstance->afterDelete();
     }
+
 }
