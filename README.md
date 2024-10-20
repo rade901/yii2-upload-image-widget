@@ -6,7 +6,7 @@
 
     File-table
 
-    php yii migrate --migrationPath=@vendor/rade901/yii2-upload-image-widget/src/migrations
+   ```php  php yii migrate --migrationPath=@vendor/rade901/yii2-upload-image-widget/src/migrations ```
 
 
 
