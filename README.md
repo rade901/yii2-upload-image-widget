@@ -1,6 +1,6 @@
     Instalation
 
-    "rade901/yii2-upload-image-widget": "dev-main"
+    require "rade901/yii2-upload-image-widget": "dev-main"
 
     start migrations:
 
