@@ -1,8 +1,12 @@
     Instalation
 
-    require "rade901/yii2-upload-image-widget": "dev-main"
+    composer require rade901/yii2-upload-image-widget
+
+    <hr>
 
     start migrations:
+
+    <hr>
 
     File-table
 
