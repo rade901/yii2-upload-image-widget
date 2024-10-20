@@ -75,5 +75,16 @@ class UploadImageWidget extends Widget
             Yii::$app->session->setFlash('error', $e->getMessage());
         }
     }
+    
         
+    protected function deleteOldImage($file_id)
+    {
+        $file = File::findOne($file_id);
+        if ($file) {
+            if (file_exists(Yii::getAlias('@webroot') . '/' . $file->path_url . '/' . $file->name)) {
+                unlink(Yii::getAlias('@webroot') . '/' . $file->path_url . '/' . $file->name);
+            }
+            $file->delete();
+        }
     }
+}
