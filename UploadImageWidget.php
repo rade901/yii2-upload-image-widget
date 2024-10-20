@@ -37,7 +37,7 @@ class UploadImageWidget extends Widget
 
             $file = new File();
             $file->name = uniqid(true) . '.' . $this->model->imageFile->extension;
-            $file->path_url = Yii::$app->params['uploads']['profile'];
+            $file->path_url = Yii::$app->params['uploads']['image'];
             $file->base_url = Yii::$app->urlManager->createAbsoluteUrl($file->path_url);
             $file->mime_type = mime_content_type($this->model->imageFile->tempName);
             if (!$file->save()) {
@@ -50,7 +50,7 @@ class UploadImageWidget extends Widget
                 throw new \Exception('Image save failed');
             }
 
-            if (!$this->model->imageFile->saveAs(Yii::getAlias('@webroot') . '/' . Yii::$app->params['uploads']['profile'] . '/' . $file->name)) {
+            if (!$this->model->imageFile->saveAs(Yii::getAlias('@webroot') . '/' . Yii::$app->params['uploads']['image'] . '/' . $file->name)) {
                 throw new \Exception('Image save failed');
             }
 
