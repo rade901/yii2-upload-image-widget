@@ -1,4 +1,4 @@
-    Instalation
+>    Instalation
 
     composer require rade901/yii2-upload-image-widget
 
