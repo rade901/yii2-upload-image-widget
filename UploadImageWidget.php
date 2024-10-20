@@ -74,19 +74,25 @@ class UploadImageWidget extends Widget
         }
     }
 }
-class InsertAfterDelete extends Widget
+class ImageBehavior extends Behavior
 {
-     /**
-     * {@inheritdoc}
-     */
-    public function afterDelete()
-    {
-        parent::afterDelete();
+    public $imagePath = 'uploads/profile';
+    public $imageField = 'file_id';
 
-        if ($this->file_id) {
-            $file = File::findOne($this->file_id);
+    public function events()
+    {
+        return [
+            ActiveRecord::EVENT_BEFORE_DELETE => 'beforeDelete',
+        ];
+    }
+
+    public function beforeDelete()
+    {
+        $fileId = $this->owner->{$this->imageField};
+        if ($fileId) {
+            $file = File::findOne($fileId);
             if ($file) {
-                $filePath = Yii::getAlias('@webroot') . '/' . Yii::$app->params['uploads']['profile'] . '/' . $file->name;
+                $filePath = Yii::getAlias('@webroot') . '/' . $this->imagePath . '/' . $file->name;
                 if (file_exists($filePath)) {
                     unlink($filePath);
                 }
