@@ -9,7 +9,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Rade\\Yii2UploadImageWidget\\": "src/"
+            "Rade901\\Yii2UploadImageWidget\\": "src/"
         }
     },
     "authors": [
