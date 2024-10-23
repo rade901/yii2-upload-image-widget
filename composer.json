@@ -1,5 +1,5 @@
 {
-    "name": "rade/yii2-upload-image-widget",
+    "name": "rade901/yii2-upload-image-widget",
     "description": "Upload one image widget yii2",
     "type": "yii2-widget",
     "require": {
